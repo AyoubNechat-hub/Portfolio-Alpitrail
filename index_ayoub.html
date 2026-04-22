@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ayoub Nechat · Data Analyst Portfolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #F7F6F2;
+    --surface: #FFFFFF;
+    --border: #E2E0D8;
+    --text: #1A1A18;
+    --muted: #6B6B65;
+    --hint: #A8A89F;
+    --accent: #1D9E75;
+    --accent-light: #E1F5EE;
+    --accent-dark: #085041;
+    --blue: #185FA5;
+    --blue-light: #E6F1FB;
+    --purple: #534AB7;
+    --purple-light: #EEEDFE;
+    --amber: #BA7517;
+    --amber-light: #FAEEDA;
+    --coral: #993C1D;
+    --coral-light: #FAECE7;
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 16px;
+    line-height: 1.6;
+  }
+
+  /* NAV */
+  nav {
+    position: sticky;
+    top: 0;
+    background: rgba(247,246,242,0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    z-index: 100;
+    padding: 0 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 56px;
+  }
+  .nav-logo { font-size: 14px; font-weight: 500; letter-spacing: -0.01em; }
+  .nav-links { display: flex; gap: 2rem; list-style: none; }
+  .nav-links a { font-size: 13px; color: var(--muted); text-decoration: none; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--text); }
+
+  /* LAYOUT */
+  .container { max-width: 900px; margin: 0 auto; padding: 0 2rem; }
+
+  /* HERO */
+  .hero {
+    padding: 6rem 0 4rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .hero-eyebrow {
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .hero-eyebrow::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 1px;
+    background: var(--accent);
+  }
+  h1 {
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 300;
+    letter-spacing: -0.03em;
+    line-height: 1.1;
+    margin-bottom: 1.5rem;
+    color: var(--text);
+  }
+  h1 span { font-weight: 500; }
+  .hero-desc {
+    font-size: 17px;
+    color: var(--muted);
+    max-width: 540px;
+    line-height: 1.7;
+    margin-bottom: 2rem;
+  }
+  .badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 2.5rem; }
+  .badge {
+    font-size: 12px;
+    padding: 5px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    color: var(--muted);
+    font-family: 'DM Mono', monospace;
+  }
+  .cta-group { display: flex; gap: 12px; flex-wrap: wrap; }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    transition: all 0.2s;
+    cursor: pointer;
+  }
+  .btn-primary {
+    background: var(--text);
+    color: var(--bg);
+    border: 1px solid var(--text);
+  }
+  .btn-primary:hover { background: #2d2d28; }
+  .btn-outline {
+    background: transparent;
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .btn-outline:hover { border-color: var(--text); }
+
+  /* SECTIONS */
+  section { padding: 4rem 0; border-bottom: 1px solid var(--border); }
+  .section-label {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--hint);
+    margin-bottom: 2rem;
+  }
+  h2 {
+    font-size: 1.75rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    margin-bottom: 1rem;
+    color: var(--text);
+  }
+  h3 {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+  }
+
+  /* PIPELINE */
+  .pipeline {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+  .pipe-step {
+    padding: 1.25rem 1rem;
+    border-right: 1px solid var(--border);
+  }
+  .pipe-step:last-child { border-right: none; }
+  .pipe-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    color: var(--hint);
+    margin-bottom: 8px;
+  }
+  .pipe-name {
+    font-size: 13px;
+    font-weight: 500;
+    color: var(--text);
+    margin-bottom: 4px;
+  }
+  .pipe-tech {
+    font-size: 11px;
+    color: var(--muted);
+    line-height: 1.5;
+  }
+
+  /* METRICS */
+  .metrics {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 12px;
+    margin: 2rem 0;
+  }
+  .metric-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+  }
+  .metric-val {
+    font-size: 1.75rem;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+    color: var(--text);
+  }
+  .metric-label {
+    font-size: 12px;
+    color: var(--muted);
+    margin-top: 4px;
+  }
+
+  /* INSIGHTS */
+  .insights-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-top: 1.5rem;
+  }
+  .insight-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+  }
+  .tag {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 500;
+    padding: 3px 10px;
+    border-radius: 20px;
+    margin-bottom: 10px;
+    font-family: 'DM Mono', monospace;
+  }
+  .tag-sql { background: var(--blue-light); color: var(--blue); }
+  .tag-ml  { background: var(--accent-light); color: var(--accent-dark); }
+  .tag-bi  { background: var(--purple-light); color: var(--purple); }
+  .tag-py  { background: var(--amber-light); color: var(--amber); }
+  .tag-crm { background: var(--coral-light); color: var(--coral); }
+  .insight-title { font-size: 14px; font-weight: 500; margin-bottom: 6px; }
+  .insight-desc  { font-size: 13px; color: var(--muted); line-height: 1.6; }
+
+  /* CODE BLOCK */
+  .code-block {
+    background: #1A1A18;
+    border-radius: 10px;
+    padding: 1.25rem 1.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 12.5px;
+    line-height: 1.8;
+    color: #C8C8C0;
+    overflow-x: auto;
+    margin: 1rem 0;
+  }
+  .kw { color: #85B7EB; }
+  .fn { color: #5DCAA5; }
+  .str { color: #FAC775; }
+  .cm { color: #4A4A42; }
+
+  /* SQL QUERIES */
+  .queries { display: flex; flex-direction: column; gap: 16px; margin-top: 1.5rem; }
+  .query-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    overflow: hidden;
+  }
+  .query-header {
+    padding: 0.875rem 1.25rem;
+    border-bottom: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .query-num {
+    font-family: 'DM Mono', monospace;
+    font-size: 11px;
+    background: var(--bg);
+    padding: 2px 8px;
+    border-radius: 4px;
+    color: var(--muted);
+  }
+  .query-title { font-size: 14px; font-weight: 500; }
+  .query-desc { font-size: 13px; color: var(--muted); margin-left: auto; }
+  .query-body { padding: 1rem 1.25rem; }
+
+  /* TECH STACK */
+  .stack-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 1.5rem;
+  }
+  .stack-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.25rem;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+  }
+  .stack-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-top: 5px;
+    flex-shrink: 0;
+  }
+  .stack-name { font-size: 14px; font-weight: 500; margin-bottom: 3px; }
+  .stack-use  { font-size: 12px; color: var(--muted); }
+
+  /* STRUCTURE */
+  .file-tree {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1.5rem;
+    font-family: 'DM Mono', monospace;
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 2;
+  }
+  .file-tree .dir { color: var(--text); font-weight: 500; }
+  .file-tree .comment { color: var(--hint); }
+
+  /* FOOTER */
+  footer {
+    padding: 3rem 0;
+    text-align: center;
+    font-size: 13px;
+    color: var(--hint);
+  }
+  footer a { color: var(--muted); text-decoration: none; }
+  footer a:hover { color: var(--text); }
+
+  /* RESPONSIVE */
+  @media (max-width: 700px) {
+    .pipeline { grid-template-columns: repeat(2, 1fr); }
+    .pipe-step { border-bottom: 1px solid var(--border); border-right: 1px solid var(--border); }
+    .metrics { grid-template-columns: repeat(2, 1fr); }
+    .insights-grid { grid-template-columns: 1fr; }
+    .stack-grid { grid-template-columns: 1fr; }
+    nav .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">Ayoub Nechat</div>
+  <ul class="nav-links">
+    <li><a href="#projet">Projet</a></li>
+    <li><a href="#analyses">Analyses</a></li>
+    <li><a href="#ml">Machine Learning</a></li>
+    <li><a href="#stack">Stack</a></li>
+    <li><a href="#structure">GitHub</a></li>
+  </ul>
+</nav>
+
+<div class="container">
+
+  <!-- HERO -->
+  <section class="hero" id="top">
+    <div class="hero-eyebrow">Portfolio · Data Analyst</div>
+    <h1><span>Alpitrail</span><br>Sales Performance<br>Analytics</h1>
+    <p class="hero-desc">
+      Projet end-to-end simulant l'environnement data d'une marque outdoor — de la génération du dataset jusqu'au dashboard décisionnel, en passant par SQL, Python et Machine Learning.
+    </p>
+    <div class="badges">
+      <span class="badge">Python</span>
+      <span class="badge">SQL · BigQuery</span>
+      <span class="badge">Scikit-Learn</span>
+      <span class="badge">Power BI</span>
+      <span class="badge">DuckDB</span>
+      <span class="badge">Google Colab</span>
+    </div>
+    <div class="cta-group">
+      <a href="https://colab.research.google.com/drive/18HL-6pmmL5J0uPhmUkMc-syflxNZYdl2?usp=sharing" target="_blank" class="btn btn-primary">Voir le Notebook →</a>
+      <a href="https://github.com" target="_blank" class="btn btn-outline">GitHub</a>
+    </div>
+  </section>
+
+  <!-- CONTEXTE -->
+  <section id="projet">
+    <div class="section-label">Contexte</div>
+    <h2>Problématique business</h2>
+    <p style="color:var(--muted); max-width:620px; line-height:1.8;">
+      Alpitrail est une marque fictive d'équipements outdoor (trail running, hiking, jackets, backpacks, accessories) opérant sur 3 marchés : Europe, Amérique du Nord et Asie.
+      L'objectif est d'identifier les leviers de rentabilité par région, catégorie et segment client.
+    </p>
+
+    <div class="metrics">
+      <div class="metric-card">
+        <div class="metric-val">3 050</div>
+        <div class="metric-label">Transactions · 2023–2024</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">1 500</div>
+        <div class="metric-label">Clients CRM</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">4,86M$</div>
+        <div class="metric-label">CA total simulé</div>
+      </div>
+      <div class="metric-card">
+        <div class="metric-val">3</div>
+        <div class="metric-label">Régions géographiques</div>
+      </div>
+    </div>
+
+    <div class="section-label" style="margin-top:2.5rem;">Pipeline</div>
+    <div class="pipeline">
+      <div class="pipe-step">
+        <div class="pipe-num">01</div>
+        <div class="pipe-name">Génération</div>
+        <div class="pipe-tech">Python<br>3 050 lignes</div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-num">02</div>
+        <div class="pipe-name">Nettoyage</div>
+        <div class="pipe-tech">Pandas<br>IQR · imputation</div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-num">03</div>
+        <div class="pipe-name">SQL</div>
+        <div class="pipe-tech">BigQuery<br>DuckDB · SQLite</div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-num">04</div>
+        <div class="pipe-name">CRM / ERP</div>
+        <div class="pipe-tech">Jointure<br>1 500 clients</div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-num">05</div>
+        <div class="pipe-name">AN</div>
+        <div class="pipe-tech">Sklearn<br>RMSE · R²</div>
+      </div>
+      <div class="pipe-step">
+        <div class="pipe-num">06</div>
+        <div class="pipe-name">Dashboard</div>
+        <div class="pipe-tech">Power BI<br>3 KPI · 4 charts</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ANALYSES -->
+  <section id="analyses">
+    <div class="section-label">Étapes 1–3</div>
+    <h2>Nettoyage & analyses SQL</h2>
+
+    <p style="color:var(--muted); margin-bottom:1.5rem; line-height:1.8;">
+      Le dataset brut contenait des doublons, valeurs manquantes, outliers et colonnes techniques parasites. Après nettoyage complet, des KPI business ont été calculés et des requêtes SQL avancées ont été produites.
+    </p>
+
+    <div class="code-block"><span class="cm"># Feature engineering — KPI business</span>
+df[<span class="str">"revenue"</span>] = df[<span class="str">"units_sold"</span>] * df[<span class="str">"unit_price"</span>]
+df[<span class="str">"gross_profit"</span>] = df[<span class="str">"revenue"</span>] - (df[<span class="str">"units_sold"</span>] * df[<span class="str">"production_cost"</span>])
+df[<span class="str">"margin"</span>] = (df[<span class="str">"gross_profit"</span>] / df[<span class="str">"revenue"</span>]).<span class="fn">fillna</span>(<span class="str">0</span>)
+df[<span class="str">"is_star_product"</span>] = df[<span class="str">"revenue"</span>] >= df[<span class="str">"revenue"</span>].<span class="fn">quantile</span>(<span class="str">0.90</span>)</div>
+
+    <div class="queries">
+      <div class="query-card">
+        <div class="query-header">
+          <span class="query-num">Q1</span>
+          <span class="query-title">Performance par catégorie et année</span>
+          <span class="query-desc tag tag-sql">SQL · Window</span>
+        </div>
+        <div class="query-body">
+          <p style="font-size:13px; color:var(--muted);">Les Jackets affichent +40% de CA en 2024. Trail Shoes maintient la meilleure marge (42%).</p>
+        </div>
+      </div>
+      <div class="query-card">
+        <div class="query-header">
+          <span class="query-num">Q2</span>
+          <span class="query-title">Top 3 produits rentables par région</span>
+          <span class="query-desc tag tag-sql">SQL · RANK()</span>
+        </div>
+        <div class="query-body">
+          <p style="font-size:13px; color:var(--muted);">Rock Trek est #1 en Asie · Mountain Hike domine en Europe et Amérique du Nord.</p>
+        </div>
+      </div>
+      <div class="query-card">
+        <div class="query-header">
+          <span class="query-num">Q3</span>
+          <span class="query-title">Top 5 produits par saison</span>
+          <span class="query-desc tag tag-sql">SQL · PARTITION BY</span>
+        </div>
+        <div class="query-body">
+          <p style="font-size:13px; color:var(--muted);">Storm Jacket est le produit #1 au printemps (178 744$). Saisonnalité marquée sur les Jackets.</p>
+        </div>
+      </div>
+      <div class="query-card">
+        <div class="query-header">
+          <span class="query-num">Q4</span>
+          <span class="query-title">Croissance 2023 vs 2024</span>
+          <span class="query-desc tag tag-sql">SQL · CASE WHEN</span>
+        </div>
+        <div class="query-body">
+          <p style="font-size:13px; color:var(--muted);">Calcul de l'évolution YoY par catégorie avec gestion NULLIF pour éviter les divisions par zéro.</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="insights-grid" style="margin-top:2rem;">
+      <div class="insight-card">
+        <span class="tag tag-crm">CRM / ERP</span>
+        <div class="insight-title">Jointure 2 sources de données</div>
+        <div class="insight-desc">1 500 comptes clients (VIP, SME, Standard, Professional) reliés aux transactions ERP pour analyser le CA par segment.</div>
+      </div>
+      <div class="insight-card">
+        <span class="tag tag-bi">Power BI</span>
+        <div class="insight-title">Dashboard décisionnel</div>
+        <div class="insight-desc">3 KPI cards · Top 5 produits · Répartition CRM par segment · Évolution semestrielle 2023→2024 avec filtres région/catégorie.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MACHINE LEARNING -->
+  <section id="ml">
+    <div class="section-label">Étape 4</div>
+    <h2>Machine Learning</h2>
+    <p style="color:var(--muted); max-width:600px; line-height:1.8; margin-bottom:1.5rem;">
+      Modèles de régression pour prédire <code style="background:var(--bg); padding:2px 6px; border-radius:4px; font-family:'DM Mono',monospace; font-size:13px;">units_sold</code> à partir des variables prix, remise, saison et marketing spend. Évaluation via RMSE et R².
+    </p>
+
+    <div class="code-block"><span class="kw">from</span> sklearn.ensemble <span class="kw">import</span> RandomForestRegressor
+<span class="kw">from</span> sklearn.metrics <span class="kw">import</span> mean_squared_error, r2_score
+<span class="kw">import</span> numpy <span class="kw">as</span> np
+
+<span class="cm"># Variables explicatives</span>
+X = df[[<span class="str">'unit_price'</span>, <span class="str">'discount_rate'</span>, <span class="str">'marketing_spend'</span>, <span class="str">'month'</span>]]
+y = df[<span class="str">'units_sold'</span>]
+
+<span class="cm"># Modèle Random Forest</span>
+model = <span class="fn">RandomForestRegressor</span>(n_estimators=<span class="str">100</span>, random_state=<span class="str">42</span>)
+model.<span class="fn">fit</span>(X_train, y_train)
+
+<span class="cm"># Évaluation</span>
+rmse = np.<span class="fn">sqrt</span>(<span class="fn">mean_squared_error</span>(y_test, y_pred))
+r2   = <span class="fn">r2_score</span>(y_test, y_pred)
+<span class="fn">print</span>(<span class="str">f"RMSE : {rmse:.2f} | R² : {r2:.3f}"</span>)</div>
+
+    <div class="insights-grid">
+      <div class="insight-card">
+        <span class="tag tag-ml">Régression linéaire</span>
+        <div class="insight-title">Modèle baseline</div>
+        <div class="insight-desc">Premier modèle pour établir une référence de performance. Simple, interprétable, adapté à une première présentation.</div>
+      </div>
+      <div class="insight-card">
+        <span class="tag tag-ml">Random Forest</span>
+        <div class="insight-title">Modèle amélioré</div>
+        <div class="insight-desc">Meilleures performances que la régression linéaire grâce à la capture des relations non-linéaires entre variables.</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STACK -->
+  <section id="stack">
+    <div class="section-label">Technologies</div>
+    <h2>Stack technique</h2>
+    <div class="stack-grid">
+      <div class="stack-card">
+        <div class="stack-dot" style="background:#EF9F27;"></div>
+        <div>
+          <div class="stack-name">Python</div>
+          <div class="stack-use">Génération · Nettoyage · Feature engineering · AN</div>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-dot" style="background:#378ADD;"></div>
+        <div>
+          <div class="stack-name">SQL</div>
+          <div class="stack-use">BigQuery · DuckDB · SQLite in-memory</div>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-dot" style="background:#7F77DD;"></div>
+        <div>
+          <div class="stack-name">Power BI</div>
+          <div class="stack-use">Dashboard · KPI · Filtres dynamiques</div>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-dot" style="background:#1D9E75;"></div>
+        <div>
+          <div class="stack-name">Scikit-Learn</div>
+          <div class="stack-use">LinearRegression · RandomForestRegressor</div>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-dot" style="background:#888780;"></div>
+        <div>
+          <div class="stack-name">Pandas · NumPy</div>
+          <div class="stack-use">Manipulation de données · Calculs vectorisés</div>
+        </div>
+      </div>
+      <div class="stack-card">
+        <div class="stack-dot" style="background:#D85A30;"></div>
+        <div>
+          <div class="stack-name">Google Colab</div>
+          <div class="stack-use">Environnement de développement · Export CSV</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- STRUCTURE GITHUB -->
+  <section id="structure">
+    <div class="section-label">Organisation GitHub</div>
+    <h2>Structure du repository</h2>
+    <div class="file-tree">
+      <span class="dir">alpitrail-data-project/</span><br>
+      &nbsp;&nbsp;<span class="dir">data/</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;alpitrail_sales_dirty_dataset.csv &nbsp;&nbsp;&nbsp;<span class="comment"># Dataset brut</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;alpitrail_sales_version_final.csv &nbsp;&nbsp;&nbsp;<span class="comment"># Dataset nettoyé</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;erp_sales_transactions.csv &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># Table de faits ERP</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;crm_customer_database.csv &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># Référentiel CRM</span><br>
+      &nbsp;&nbsp;<span class="dir">sql/</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;alpitrail_queries.sql &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># 4 requêtes analytiques</span><br>
+      &nbsp;&nbsp;<span class="dir">python/</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;alpitrail_cleaning_analysis.ipynb &nbsp;&nbsp;<span class="comment"># Notebook Colab</span><br>
+      &nbsp;&nbsp;<span class="dir">dashboard/</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;<span class="dir">screenshots/</span> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># Captures Power BI</span><br>
+      &nbsp;&nbsp;<span class="dir">documentation/</span><br>
+      &nbsp;&nbsp;&nbsp;&nbsp;workflow_alpitrail.pdf &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="comment"># Workflow complet</span><br>
+      &nbsp;&nbsp;README.md
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <p>Ayoub Nechat · Data Analyst · <a href="https://github.com">GitHub</a> · <a href="https://linkedin.com">LinkedIn</a></p>
+  <p style="margin-top:8px; font-size:12px;">Projet réalisé avec Python, SQL, Scikit-Learn et Power BI · Données fictives</p>
+</footer>
+
+</body>
+</html>
